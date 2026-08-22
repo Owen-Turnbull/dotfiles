@@ -19,6 +19,13 @@ return {
 			desc = "Telescope live grep",
 		},
 		{
+			"<leader>fG",
+			function()
+				require("telescope.builtin").git_status()
+			end,
+			desc = "Telescope git status",
+		},
+		{
 			"<leader>fb",
 			function()
 				require("telescope.builtin").buffers()
@@ -40,7 +47,6 @@ return {
 			desc = "Telescope diagnostics",
 		},
 	},
-
 	config = function()
 		require('telescope').setup({
 			pickers = {

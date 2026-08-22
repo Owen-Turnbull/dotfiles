@@ -24,7 +24,7 @@ return {
       install_dir = vim.fn.stdpath('data') .. '/site'
     }
 
-    require('nvim-treesitter').install { 'python', 'lua', 'typescript', 'markdown', 'markdown_inline', 'elixir', 'heex' }:wait(30000)
+    require('nvim-treesitter').install { 'python', 'lua', 'typescript', 'markdown', 'markdown_inline', 'elixir', 'heex', 'cpp' }:wait(30000)
 
       -- Enable features per language: highlighting, folds, and indentation
     vim.api.nvim_create_autocmd('FileType', {

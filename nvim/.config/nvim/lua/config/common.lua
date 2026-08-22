@@ -173,12 +173,13 @@ vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window sma
 vim.keymap.set("n", "+", [[<cmd>horizontal resize +2<cr>]]) -- make the window bigger horizontally by pressing shift and =
 vim.keymap.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window smaller horizontally by pressing shift and -
 
+vim.keymap.set('n', 'r', 'u', { noremap = true })       -- undo (overwrites replace-char)
 vim.keymap.set('n', 'R', '<C-r>', { noremap = true })
 
 vim.keymap.set("n", "<left>", "<C-w>h")
 vim.keymap.set("n", "<right>", "<C-w>l")
-vim.keymap.set("n", "<up>", "<C-w>j")
-vim.keymap.set("n", "<down>", "<C-w>k")
+vim.keymap.set("n", "<down>", "<C-w>j")
+vim.keymap.set("n", "<up>", "<C-w>k")
 
 vim.keymap.set("n", "Z", "J", { noremap = true })  -- Join lines
 vim.keymap.set('n', '<C-w>', '<C-w>c', { noremap = true, silent = true, nowait = true })
