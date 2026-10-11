@@ -1,9 +1,12 @@
 [user]
 	email = ows8turnbull@gmail.com
-	name = SoahLi
+	name = Owen-Turnbull
 [diff]
   tool = nvimdiff
 [core]
   editor = nvim -f
 [difftool]
   prompt = false
+[safe]
+	directory = /home/owen/anticipation_mechanism/gem5
+	directory = /home/owen/anticipation_mechanism_temp/bundle_ws
