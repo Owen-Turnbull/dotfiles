@@ -175,6 +175,7 @@ vim.keymap.set("n", "_", [[<cmd>horizontal resize -2<cr>]]) -- make the window s
 
 vim.keymap.set('n', 'r', 'u', { noremap = true })       -- undo (overwrites replace-char)
 vim.keymap.set('n', 'R', '<C-r>', { noremap = true })
+vim.keymap.set('n', 'u', '<Nop>', { noremap = true })   -- unbind default undo (moved to r)
 
 vim.keymap.set("n", "<left>", "<C-w>h")
 vim.keymap.set("n", "<right>", "<C-w>l")
@@ -214,8 +215,8 @@ vim.cmd([[
 ]])
 
 -- half page movement
-vim.keymap.set('n', '<C-j>', '<C-d>', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-k>', '<C-u>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<C-j>', '<C-d>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<C-k>', '<C-u>', { noremap = true, silent = true })
 
 -- replaces your C-] mapping
 vim.keymap.set('n', '<C-S-A-F9>', '<C-]>', { noremap = true, silent = true, nowait = true })
