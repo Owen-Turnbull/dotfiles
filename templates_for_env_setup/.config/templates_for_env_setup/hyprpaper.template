@@ -10,6 +10,12 @@ wallpaper = HDMI-A-3, $wp
 #splash = false
 $wp = <wp>
 wallpaper {
+  monitor = DP-3
+  path = $wp
+  fit_mode = cover
+
+}
+wallpaper {
   monitor = eDP-1
   path = $wp
   fit_mode = cover
