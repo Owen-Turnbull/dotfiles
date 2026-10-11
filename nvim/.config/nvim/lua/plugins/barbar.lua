@@ -1,3 +1,8 @@
+require("config.preview_buffer").setup({})
+vim.keymap.set("n", "<A-f>", function()
+	require("config.preview_buffer").cancel_preview()
+end, { noremap = true, silent = true, desc = "Keep buffer as permanent tab" })
+
 return {
 	{
 		"romgrk/barbar.nvim",
@@ -16,17 +21,11 @@ return {
 			map("n", "<A-d>", "<Cmd>BufferClose<CR>", opts)
 			map("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
 		end,
-		opts = {},
+		opts = {
+			icons = {
+				pinned = { button = '', filename = true },
+			},
+		},
 		version = "^1.0.0",
-},
-{
-	"Old-Farmer/preview-buffer.nvim",
-	event = "VeryLazy",
-	opts = {},
-	init = function()
-		vim.keymap.set("n", "<A-f>", function()
-			require("preview-buffer").cancel_preview()
-		end, { noremap = true, silent = true, desc = "Keep buffer as permanent tab" })
-	end,
 },
 }

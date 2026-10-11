@@ -46,9 +46,46 @@ return {
 			end,
 			desc = "Telescope diagnostics",
 		},
+		{
+			"<leader>fn",
+			function()
+				require("telescope.builtin").lsp_document_symbols({
+					symbols = { "function", "method" },
+				})
+			end,
+			desc = "Telescope function symbols (current file)",
+		},
+		{
+			"<leader>fN",
+			function()
+				require("telescope.builtin").lsp_dynamic_workspace_symbols({
+					symbols = { "function", "method" },
+				})
+			end,
+			desc = "Telescope function symbols (workspace)",
+		},
 	},
 	config = function()
+		local actions = require('telescope.actions')
+		local action_state = require('telescope.actions.state')
+
+		-- <C-t> opens the selection in the currently focused window (like
+		-- default <CR>), but pins the buffer we're leaving as permanent, so
+		-- the old file keeps its own barbar tab instead of being unlisted.
+		-- The newly opened buffer stays an ordinary disposable preview.
+		local function select_edit_pinned(prompt_bufnr)
+			local picker = action_state.get_current_picker(prompt_bufnr)
+			require("config.preview_buffer").cancel_preview(picker.original_bufnr)
+			actions.select_default(prompt_bufnr)
+		end
+
 		require('telescope').setup({
+			defaults = {
+				mappings = {
+					i = { ["<C-t>"] = select_edit_pinned },
+					n = { ["<C-t>"] = select_edit_pinned },
+				},
+			},
 			pickers = {
 				find_files = {
 					hidden = true,      -- Show hidden files

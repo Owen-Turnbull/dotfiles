@@ -221,6 +221,21 @@ vim.keymap.set({ 'n', 'v' }, '<C-k>', '<C-u>', { noremap = true, silent = true }
 -- replaces your C-] mapping
 vim.keymap.set('n', '<C-S-A-F9>', '<C-]>', { noremap = true, silent = true, nowait = true })
 
+-- goto definition, pinned (ctrl+; via kitty -> ctrl+shift+alt+f10)
+-- jumps in the current window/view (same as <C-]>), but pins the buffer
+-- we're leaving as permanent, so the original file keeps its own barbar tab
+-- instead of being unlisted/replaced. The buffer we land on stays an
+-- ordinary disposable preview.
+vim.keymap.set('n', '<C-S-A-F10>', function()
+	require('config.preview_buffer').cancel_preview() -- pin the buffer we're jumping from
+	vim.lsp.buf.definition({
+		on_list = function(options)
+			vim.fn.setqflist({}, ' ', options)
+			vim.cmd('cfirst')
+		end,
+	})
+end, { noremap = true, silent = true, nowait = true, desc = "Goto definition (pinned)" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
