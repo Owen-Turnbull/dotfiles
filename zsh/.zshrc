@@ -198,3 +198,4 @@ eval "$(oh-my-posh init zsh --config ~/.oh_my_posh_config.omp.json)"
 
 
 export PATH=/opt/riscv/bin:$PATH
+export PATH=${HOME}/bin/qemu/bin:${PATH}
