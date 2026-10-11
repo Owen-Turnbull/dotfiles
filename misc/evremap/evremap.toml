@@ -1,5 +1,5 @@
 device_name = "Kinesis Advantage2 Keyboard"
-phys = "usb-0000:02:00.0-1/input1"
+phys = "usb-0000:02:00.0-5/input1"
 
 [[remap]]
 input = ["KEY_PAUSE"]
